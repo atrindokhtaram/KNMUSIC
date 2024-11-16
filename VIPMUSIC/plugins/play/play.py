@@ -46,16 +46,18 @@ SPAM_THRESHOLD = 2
 @app.on_message(
     filters.command(
         [
+            "پخش",
             "play",
-            "vplay",
-            "cplay",
-            "cvplay",
-            "playforce",
-            "vplayforce",
-            "cplayforce",
+            "vplay","ویدیو پخش",
+            "cplay","کانال پخش",
+            "cute",
+            "cvplay","ویدیو کانال پخش",
+            "playforce","فوری پخش",
+            "vplayforce","فوری ویدیو پخش",
+            "cplayforce","فوری کانال پخش",
             "cvplayforce",
         ],
-        prefixes=["/", "!", "%", ",", "@", "#"],
+        prefixes=["", "/"]
     )
     & filters.group
     & ~BANNED_USERS
