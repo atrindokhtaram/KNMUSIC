@@ -29,7 +29,7 @@ UNAUTH_COMMAND = get_command("UNAUTH_COMMAND")
 AUTHUSERS_COMMAND = get_command("AUTHUSERS_COMMAND")
 
 
-@app.on_message(filters.command(AUTH_COMMAND) & filters.group & ~BANNED_USERS)
+@app.on_message(filters.command(AUTH_COMMAND,prefixes=["", "/"]) & filters.group & ~BANNED_USERS)
 @AdminActual
 async def auth(client, message: Message, _):
     if not message.reply_to_message:
