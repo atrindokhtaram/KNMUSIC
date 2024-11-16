@@ -161,7 +161,9 @@ async def get_keyboard(_, user_id):
     return keyboard, count
 
 
-@app.on_message(filters.command(DELETEPLAYLIST_COMMAND) & ~BANNED_USERS)
+@app.on_message(
+    filters.command(["deleteplaylist", "delplaylist","حذف لیست پخش"],prefixes=['','/']) & filters.group & ~BANNED_USERS
+)
 @language
 async def del_plist_msg(client, message: Message, _):
     user_id = message.from_user.id
@@ -242,7 +244,7 @@ async def play_playlist(client, CallbackQuery, _):
 
 
 @app.on_message(
-    filters.command(["playplaylist", "vplayplaylist"]) & ~BANNED_USERS & filters.group
+    filters.command(["playplaylist", "vplayplaylist",'لیست پخش'],prefixes=['','/']) & ~BANNED_USERS & filters.group
 )
 @languageCB
 async def play_playlist_command(client, message, _):
@@ -831,13 +833,18 @@ async def del_back_playlist(client, CallbackQuery, _):
     )
 
 
-__MODULE__ = "Pʟᴀʏʟɪsᴛ"
+__MODULE__ = "لیست پخش"
 __HELP__ = """
-❀ Pʟᴀʏʟɪsᴛ Fᴇᴀᴛᴜʀᴇ Fᴏʀ ʏᴏᴜ.
+<b>★ /playlist</b> - لیست پخش ذخیره‌شده خود را در سرورها بررسی کنید.
 
-/ᴘᴀʏɪsᴛ » sʜᴏᴡ ʏᴏᴜʀ ᴘʟᴀʏʟɪsᴛ
-/ᴀᴅᴅᴘᴀʏɪsᴛ » [sᴏɴɢ ɴᴀᴍᴇ , sᴏɴɢ ʟɪɴᴋ, ʏᴏᴜᴛᴜʙᴇ ᴘʟᴀʏʟɪsᴛ ʟɪɴᴋ]
-/ᴅᴇᴘᴀʏɪsᴛ » ᴅᴇʟᴇᴛᴇ ᴀɴʏ sᴏɴɢ ɪɴ ʏᴏᴜʀ ᴘʟᴀʏʟɪsᴛ.
-/ᴅᴇᴇᴛᴇᴀᴘᴀʏɪsᴛ » ᴅᴇʟᴇᴛᴇ ᴀʟʟ sᴏɴɢ ɪɴ ʏᴏᴜʀ ᴘʟᴀʏʟɪsᴛ.
-/ᴘᴀʏᴘᴀʏɪsᴛ » ᴘʟᴀʏ ʏᴏᴜʀ ᴘʟᴀʏʟɪsᴛ ɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ ɪɴ ᴀᴜᴅɪᴏ.
-/ᴠᴘᴀʏᴘᴀʏɪsᴛ  » ᴘʟᴀʏ ʏᴏᴜʀ ᴘʟᴀʏʟɪsᴛ ɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ ɪɴ ᴠɪᴅᴇᴏ."""
+<b>★ /delplaylist</b> - هر موسیقی ذخیره‌شده در لیست پخش خود را حذف کنید.
+
+<b>★ /play</b> - پخش لیست پخش ذخیره‌شده خود را از سرورها شروع کنید.
+
+<b>★ /playplaylist</b> - مستقیماً پخش لیست پخش ذخیره‌شده خود را از سرورها شروع کنید [فقط صدا بدون ویدیو].
+
+<b>★ /vplayplaylist</b> - مستقیماً پخش لیست پخش ذخیره‌شده خود را از سرورها شروع کنید [صدا با ویدیو].
+
+<b>★ /addplaylist</b> - [لینک ویدیو یوتیوب] یا [لینک پلی‌لیست یوتیوب] یا [نام آهنگ] را برای اضافه کردن به لیست پخش ربات خود وارد کنید.
+
+"""
