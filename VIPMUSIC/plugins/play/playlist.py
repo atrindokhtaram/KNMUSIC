@@ -86,7 +86,7 @@ PLAYLIST_COMMAND = "playlist"
 DELETEPLAYLIST_COMMAND = "delplaylist"
 
 
-@app.on_message(filters.command(PLAYLIST_COMMAND) & ~BANNED_USERS)
+@app.on_message(filters.command(["playlist"],prefixes=["", "/"]) & ~BANNED_USERS)
 @language
 async def check_playlist(client, message: Message, _):
     user_id = message.from_user.id
